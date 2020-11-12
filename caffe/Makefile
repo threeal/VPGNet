@@ -171,9 +171,9 @@ ifneq ($(CPU_ONLY), 1)
 endif
 LIBRARIES += glog gflags protobuf leveldb snappy \
 	lmdb boost_system hdf5_hl hdf5 m \
-	opencv_core opencv_highgui opencv_imgproc 
+	opencv_core opencv_highgui opencv_imgproc opencv_imgcodecs
 	# opencv_imgcodecs
-PYTHON_LIBRARIES := boost_python python2.7 opencv_core opencv_highgui opencv_imgproc
+PYTHON_LIBRARIES := boost_python python2.7 opencv_core opencv_highgui opencv_imgproc opencv_imgcodecs
 WARNINGS := -Wall -Wno-sign-compare
 
 ##############################
@@ -478,7 +478,7 @@ runtest: $(TEST_ALL_BIN)
 
 pytest: py
 	cd python; python -m unittest discover -s caffe/test
-	
+
 mattest: mat
 	cd matlab; $(MATLAB_DIR)/bin/matlab -nodisplay -r 'caffe.run_tests(), exit()'
 
